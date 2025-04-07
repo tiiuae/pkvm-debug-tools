@@ -3,7 +3,11 @@
 #define __PKVM_MODULE_DBG_TOOLS_CONFIG
 
 /* Physical address of UART in the host. */
-#define  KVM_ARM_HYP_DEBUG_UART_ADDR	0x0900000
+/* UART in QEMU */
+#define  KVM_ARM_HYP_DEBUG_UART_ADDR	0x09000000
+
+/* UART on Nvidia HW */
+//#define  KVM_ARM_HYP_DEBUG_UART_ADDR	0x031D0000
 
 /* Hypervisor ramlog collects register dumps and other data separately from
  * a kernel log. Hypervisor log is encrypted with a chacha20 cipher.

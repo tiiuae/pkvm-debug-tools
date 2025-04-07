@@ -32,7 +32,6 @@
 #include "config.h"
 #include "hyp_debug.h"
 
-#define HYP_PL011_BASE_PHYS	HYP_DEBUG_UART_ADDR
 #define HYP_PL011_UARTFR	0x18
 
 #define HYP_PL011_UARTFR_BUSY	3
@@ -118,10 +117,10 @@ int update_rb(struct shared_buffer *rb, u8 *buf, int cnt)
 
 	if (rb->wi + cnt > rb->size) {
 		tmp =  rb->size - rb->wi;
-		ops->memcpy(&rb->data[rb->wi], buf, tmp);
-		ops->memcpy(&rb->data[(rb->wi + tmp) % rb->size], &buf[tmp], cnt - tmp);
+		memcpy_el2(&rb->data[rb->wi], buf, tmp);
+		memcpy_el2(&rb->data[(rb->wi + tmp) % rb->size], &buf[tmp], cnt - tmp);
 	} else
-		ops->memcpy(&rb->data[rb->wi], buf, cnt);
+		memcpy_el2(&rb->data[rb->wi], buf, cnt);
 	barrier();
 	rb->wi = (rb->wi + cnt) % rb->size;
 	return cnt;

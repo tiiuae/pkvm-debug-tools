@@ -195,7 +195,7 @@ u64 print_mappings(u32 id, u64 start, u64 size, bool cont)
 	if (!cont) {
 		hyp_print("print_mappings id %x addr %llx, size %llx\n",
 			   id, start, size);
-		ops->memset(&sdata, 0, sizeof(struct stat_data));
+		memset_el2(&sdata, 0, sizeof(struct stat_data));
 		sdata.id = id;
 	} else
 		hyp_print("continue print_mappings id %x addr %llx, size %llx\n",

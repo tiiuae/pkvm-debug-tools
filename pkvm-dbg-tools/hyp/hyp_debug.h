@@ -17,6 +17,8 @@ int hyp_dbg_print(const char *fmt, ...);
 int hyp_print(const char *fmt, ...);
 u64 hyp_dbg(u64 cmd, u64 param1, u64 param2, u64 param3, u64 param4);
 int update_rb(struct shared_buffer *rb, u8 *buf, int cnt);
+void *memcpy_el2(void *dst, void *src, size_t n);
+void *memset_el2(void *str, int c, size_t n);
 
 /**
  * Print and count the amount of guest/hypervisor ram visible to the host

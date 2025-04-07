@@ -1,7 +1,7 @@
 
 BDIR=root/usr/bin
 LDIR=root/usr/lib/aarch64-linux-gnu/
-export KERNELRELEASE= $(shell cat $(KERNEL_DIR)/include/config/kernel.release)
+export KERNELRELEASE= $(shell cat $(HOST_KERNEL_DIR)/include/config/kernel.release)
 TMPFILE := $(shell mktemp)
 
 LIBS = $(LDIR)/libc.so.6 $(LDIR)/libzstd.so.1 $(LDIR)/ld-linux-aarch64.so.1
