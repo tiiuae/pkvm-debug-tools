@@ -12,6 +12,8 @@ extern struct dbg_tool_ops *dops;
 extern const struct pkvm_module_ops *ops;
 
 int hyp_vsnprintf(char *str, size_t size, const char *format, va_list ap);
+int hyp_vprintf(const char *format, va_list ap);
+
 int hyp_snprint(char *s, size_t slen, const char *format, ...);
 int hyp_dbg_print(const char *fmt, ...);
 int hyp_print(const char *fmt, ...);

@@ -95,6 +95,24 @@ int hyp_print(const char *fmt, ...)
 	return count;
 }
 
+int hyp_vprintf(const char *format, va_list ap)
+{
+	int retval;
+	int count;
+	char buf[PRINT_BUFFER_SIZE];
+
+	retval = hyp_vsnprintf(buf, sizeof(buf) - 1, format, ap);
+	buf[PRINT_BUFFER_SIZE - 1] = '\0';
+	count = 0;
+	while (buf[count]) {
+		hyp_putc(buf[count]);
+		count++;
+	}
+
+	return count;
+;
+}
+
 int hyp_snprint(char *s, size_t slen, const char *format, ...)
 {
 	int retval;

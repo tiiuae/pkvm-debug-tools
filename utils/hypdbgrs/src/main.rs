@@ -99,11 +99,11 @@ fn parse_target(s: &str) -> Result<u32, String> {
         _ => if s.starts_with("guest") {
                 let (_, id_str) = s.split_at(5);
                 if id_str.is_empty() {
-                    return Ok(2);
+                    return Ok(0x1000);
                 } else {
                     let id_num: u32 = id_str.parse()
                         .expect("Specify target as guest<id>");
-                    return Ok(id_num + 1);
+                    return Ok(id_num + 0x1000);
                 }
              } else { Err(String::from(s)) },
     }

@@ -37,7 +37,7 @@ int pkvm_driver_hyp_init(const struct pkvm_module_ops *a_ops)
 		return ret;
 
 	hyp_print("Pkvm debugger initiated\n");
-	dops->register_hyp_print(&hyp_print);
+	dops->register_hyp_vprint(&hyp_vprintf);
 	debug_dump_csrs();
 	return 0;
 }
